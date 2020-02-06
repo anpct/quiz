@@ -1,0 +1,14 @@
+{% extends 'tst/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+TEST ENDED
+{% endblock %}
+{% block body %}
+<h1>
+THANK YOU FOR PARTICIPATING
+RESULTS WILL BE ANOUNCED SOON
+</h1>
+<script>
+window.onbeforeunload = function() { return "Your work will be lost."; };
+</script>
+    {% endblock %}

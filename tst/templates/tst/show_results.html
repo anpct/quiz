@@ -1,0 +1,16 @@
+{% extends 'tst/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+RESULTS
+{% endblock %}
+{% block body %}
+<table border="1">
+{% for i in l %}
+<tr>
+{% for j in i %}
+<td>{{ j }}</td>
+{% endfor %}
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

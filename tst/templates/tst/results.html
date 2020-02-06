@@ -1,0 +1,15 @@
+{% extends 'tst/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+RESULTS
+{% endblock %}
+{% block body %}
+<h1>
+RESLUTS
+</h1>
+<form method="POST">
+ {% csrf_token %}
+<input type="text" id="key" name="key">
+<input type="submit">
+</form>
+    {% endblock %}
