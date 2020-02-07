@@ -27,12 +27,3 @@ class Resp(Model):
 
 
 
-class Results(Model):
-
-    class Meta:
-        unique_together = (('roll_no', 'passkey'),)
-    
-    roll_no = models.CharField(max_length = 10, null = False, blank = False, validators=[validate_roll])
-    name = models.CharField(max_length = 50, null = False, blank = False)
-    passkey = models.CharField(max_length = 6, null = False, blank = False, validators=[validate_key])
-    marks = models.IntegerField( null = False, blank = False)

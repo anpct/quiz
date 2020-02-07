@@ -222,10 +222,13 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
-
-window.onbeforeunload = function() {
-        return "Doing this will clear all your answers!!!!";
-    }
+window.onbeforeunload = function(e) {
+      return 'You application form is not submitted yet.';
+    };
+    document.getElementById("myForm").onsubmit = function(e) {
+      window.onbeforeunload = null;
+      return true;
+    };
 
 </script>
 {% endblock %}

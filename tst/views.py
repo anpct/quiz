@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from tst.forms import RegForm
 from django.http import HttpResponse
 import json
-from tst.models import Resp, Results
+from tst.models import Resp
 from django.views.decorators.cache import cache_control
 
 @cache_control(no_cache=True, must_revalidate=True)
