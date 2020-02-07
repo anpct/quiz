@@ -20,6 +20,6 @@ from tst import views as tst_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tst_views.register, name="register"),
-    path('questions/<str:ids>/<str:psk>', tst_views.questions, name="questions"),
+    path('questions/', tst_views.questions, name="questions"),
     path('results/', tst_views.results, name="results"),
 ]

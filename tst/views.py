@@ -13,8 +13,10 @@ def register(request):
             roll_no = form.cleaned_data['roll_no']
             name = form.cleaned_data['name']
             passkey = form.cleaned_data['passkey']
+            request.session['roll_no'] = roll_no
+            request.session['passkey'] = passkey
             form.save()
-            return redirect('questions', roll_no, passkey)
+            return redirect('questions')
 
     else:
         form = RegForm()
@@ -23,7 +25,9 @@ def register(request):
 from django.db.models import Q
 
 @cache_control(no_cache=True, must_revalidate=True)
-def questions(request, ids, psk):
+def questions(request):
+    ids = request.session["roll_no"]
+    psk = request.session["passkey"]
     json_file = open('C:\\Users\\anthi\\OneDrive\\Documents\\quiz\\quiz\\tst\\static\\tst\\questions.json', 'r')
     q = json.load(json_file)
     dict_ques = q[q[psk]]
