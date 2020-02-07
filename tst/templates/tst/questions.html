@@ -65,12 +65,25 @@ QUESTIONS
   justify-content: center;
   font-size: 48px;
 }
+
+.c {
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  top: 50px;
+}
 </style>
 {% endblock %}
 {% block body %}
-<div class="c">
+<div class="row">
+<div class="col-sm-4">
+<div class="c" >
 <div id="app"></div>
 </div>
+</div>
+<div class="col">
 <form method="POST" id="myForm">
 {% csrf_token %}
    {% for key, value in dict_ques.items %} 
@@ -79,7 +92,7 @@ QUESTIONS
   {{v}}
   <br>
   {% endfor %}
-  <select id="{{ key }}" name="{{ key }}">
+  <select id="{{ key }}" name="{{ key }}" class="custom-select-sm">
   <option value="0">SELECT AN ANSWER</option>
   <option value="1">1</option>
   <option value="2">2</option>
@@ -88,9 +101,11 @@ QUESTIONS
   </select>
   <br>
 {% endfor %}
-<button type="submit">SUBMIT</button>
+<br>
+<button type="submit" class="btn btn-primary btn-lg">SUBMIT</button>
 </form>
-
+</div>
+</div>
 <script>
 
 const FULL_DASH_ARRAY = 283;
@@ -207,6 +222,10 @@ function setCircleDasharray() {
     .getElementById("base-timer-path-remaining")
     .setAttribute("stroke-dasharray", circleDasharray);
 }
+
+window.onbeforeunload = function() {
+        return "Doing this will clear all your answers!!!!";
+    }
 
 </script>
 {% endblock %}

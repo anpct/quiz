@@ -21,5 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tst_views.register, name="register"),
     path('questions/', tst_views.questions, name="questions"),
-    path('results/', tst_views.results, name="results"),
+    path('results-of-students-list/', tst_views.results, name="results"),
 ]

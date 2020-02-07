@@ -28,7 +28,7 @@ from django.db.models import Q
 def questions(request):
     ids = request.session["roll_no"]
     psk = request.session["passkey"]
-    json_file = open('C:\\Users\\anthi\\OneDrive\\Documents\\quiz\\quiz\\tst\\static\\tst\\questions.json', 'r')
+    json_file = open('tst\\static\\tst\\questions.json', 'r')
     q = json.load(json_file)
     dict_ques = q[q[psk]]
     ans = ""
@@ -45,7 +45,7 @@ def questions(request):
 def results(request):
     if request.method == "POST":
         key = request.POST.get("key")
-        json_file = open('C:\\Users\\anthi\\OneDrive\\Documents\\quiz\\quiz\\tst\\static\\tst\\questions.json', 'r')
+        json_file = open('tst\\static\\tst\\questions.json', 'r')
         q = json.load(json_file)
         s = "ans_" + key
         ans = q[s]
