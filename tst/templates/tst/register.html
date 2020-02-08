@@ -9,7 +9,7 @@ ENTER DETAILS
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Join Today</legend>
+                <legend class="border-bottom mb-4">Please provide your details</legend>
                 {{ form|crispy }}
             </fieldset>
             <div class="form-group">
@@ -19,4 +19,5 @@ ENTER DETAILS
         </form>
     </div>
     </main>
+
     {% endblock %}
