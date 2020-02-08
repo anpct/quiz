@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models import Model 
 from django.core.exceptions import ValidationError
+from django.conf import settings
 
 def validate_roll(roll_no):
     if len(roll_no) == 10:
@@ -9,7 +10,7 @@ def validate_roll(roll_no):
         raise ValidationError("INVALID ROLL NO")
 
 def validate_key(key):
-    if len(key) == 6 and key in ['ta2n2j', 'a2vceu', 'n26qxl']:
+    if key in settings.ALLOWED_PASSKEY:
         return
     else:
         raise ValidationError("INVALID PASSKEY NO")
