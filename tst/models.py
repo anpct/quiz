@@ -32,4 +32,8 @@ class Resp(Model):
     resp = models.CharField(max_length = 30, null = True, blank = True)
 
 
+    def save(self, force_insert=False, force_update=False):
+        self.roll_no = self.roll_no.upper()
+        super(Resp, self).save(force_insert, force_update)
+
 

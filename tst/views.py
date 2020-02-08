@@ -13,7 +13,7 @@ def register(request):
             roll_no = form.cleaned_data['roll_no']
             name = form.cleaned_data['name']
             passkey = form.cleaned_data['passkey']
-            request.session['roll_no'] = roll_no
+            request.session['roll_no'] = roll_no.upper()
             request.session['passkey'] = passkey
             form.save()
             return redirect('questions')
@@ -39,7 +39,7 @@ def questions(request):
             criterion2 = Q(passkey = psk)
             q = Resp.objects.filter(criterion1 & criterion2).update(resp = ans)
         return render(request, 'tst/end.html')
-    return render(request, 'tst/questions.html', {'dict_ques': dict_ques})
+    return render(request, 'tst/questions.html', {'dict_ques': dict_ques, 'psk': psk})
 
 
 def results(request):
@@ -57,8 +57,9 @@ def results(request):
             resp = i.resp
             count = 0
             for i in range(len(ans)):
-                if resp[i] == ans[i]:
-                    count+=1
+                if resp:
+                    if resp[i] == ans[i]:
+                        count+=1
             resu.append([roll_no, name, count])
         return render(request, "tst/show_results.html", {'l': resu})
     return render(request, "tst/results.html")
