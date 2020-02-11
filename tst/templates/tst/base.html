@@ -28,10 +28,22 @@ body{
 </nav>
 {% block body %}
 {% endblock %}
+<main role="main" class="container">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</main>
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-bottom justify-content-center">
 <span class="navbar-text">
     Designed by MRIET and ACT
   </span>
 </nav>
+
 </body>
 </html>
