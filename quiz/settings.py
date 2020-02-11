@@ -23,9 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '(&(z8hb)8zi7a%a$sc9pgy*qaildmb(#iw0+$uqu@792x*)7*k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-ALLOWED_HOSTS = [ 'localhost', '127.0.0.1' , '192.168.31.138', '192.168.137.1']
+DEBUG = True
+ALLOWED_HOSTS = [ 'localhost', '127.0.0.1' , '192.168.31.138', '192.168.137.1', '192.168.137.222']
 
 
 # Application definition
@@ -120,5 +119,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT ='quiz/static/'
 
 ALLOWED_PASSKEY = ['ta2n2j', 'a2vceu', 'n26qxl']

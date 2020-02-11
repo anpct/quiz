@@ -26,20 +26,20 @@ from django.db.models import Q
 
 @cache_control(no_cache=True, must_revalidate=True)
 def questions(request):
-    ids = request.session["roll_no"]
-    psk = request.session["passkey"]
     json_file = open('tst\\static\\tst\\questions.json', 'r')
     q = json.load(json_file)
-    dict_ques = q[q[psk]]
+    dict_ques = q[q[request.session["passkey"]]]
     ans = ""
     if request.method == "POST":
         for key,value in dict_ques.items():
             ans = ans + str(request.POST.get(key))
-            criterion1 = Q(roll_no = ids)
-            criterion2 = Q(passkey = psk)
+            criterion1 = Q(roll_no = request.session["roll_no"])
+            criterion2 = Q(passkey = request.session["passkey"])
             q = Resp.objects.filter(criterion1 & criterion2).update(resp = ans)
+        del request.session["roll_no"]
+        del request.session["passkey"]
         return render(request, 'tst/end.html')
-    return render(request, 'tst/questions.html', {'dict_ques': dict_ques, 'psk': psk})
+    return render(request, 'tst/questions.html', {'dict_ques': dict_ques})
 
 
 def results(request):
