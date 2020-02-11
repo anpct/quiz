@@ -2,6 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 from django.core.exceptions import ValidationError
+from user.models import Resp
  
  
 class CustomUserCreationForm(forms.Form):
@@ -32,3 +33,9 @@ class CustomUserCreationForm(forms.Form):
             password= self.cleaned_data['password1']
         )
         return user
+
+
+class PkForm(forms.ModelForm):
+    class Meta:
+        model = Resp
+        fields = ['passkey']

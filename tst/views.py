@@ -2,26 +2,8 @@ from django.shortcuts import render, redirect
 from tst.forms import RegForm
 from django.http import HttpResponse
 import json
-from tst.models import Resp
+from user.models import Resp
 from django.views.decorators.cache import cache_control
-
-@cache_control(no_cache=True, must_revalidate=True)
-def register(request):
-    if request.method == 'POST':
-        form = RegForm(request.POST)
-        if form.is_valid():
-            roll_no = form.cleaned_data['roll_no']
-            name = form.cleaned_data['name']
-            passkey = form.cleaned_data['passkey']
-            request.session['roll_no'] = roll_no.upper()
-            request.session['passkey'] = passkey
-            form.save()
-            return redirect('questions')
-
-    else:
-        form = RegForm()
-    return render(request, 'tst/register.html', {'form': form})
-
 from django.db.models import Q
 
 @cache_control(no_cache=True, must_revalidate=True)
@@ -33,10 +15,9 @@ def questions(request):
     if request.method == "POST":
         for key,value in dict_ques.items():
             ans = ans + str(request.POST.get(key))
-            criterion1 = Q(roll_no = request.session["roll_no"])
+            criterion1 = Q(user = request.user)
             criterion2 = Q(passkey = request.session["passkey"])
             q = Resp.objects.filter(criterion1 & criterion2).update(resp = ans)
-        del request.session["roll_no"]
         del request.session["passkey"]
         return render(request, 'tst/end.html')
     return render(request, 'tst/questions.html', {'dict_ques': dict_ques})

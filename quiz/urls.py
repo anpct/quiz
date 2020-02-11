@@ -24,4 +24,5 @@ urlpatterns = [
     path('results-of-students-list/', tst_views.results, name="results"),
     path('', user_views.signup, name="signup"),
     path('login/', user_views.login_request, name='login'),
+    path('pk/', user_views.get_pk, name="pk"),
 ]

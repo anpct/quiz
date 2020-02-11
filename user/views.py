@@ -2,7 +2,7 @@
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, PkForm
 from django.contrib import messages
 
 def signup(request):
@@ -33,7 +33,7 @@ def login_request(request):
             if user is not None:
                 login(request, user)
                 messages.info(request, f"You are now logged in as {username}")
-                return redirect('register')
+                return redirect('pk')
             else:
                 messages.error(request, "Invalid username or password.")
         else:
@@ -42,3 +42,14 @@ def login_request(request):
     return render(request = request,
                     template_name = "tst/login.html",
                     context={"form":form})
+
+
+def get_pk(request):
+    if request.method == 'POST':
+        form = PkForm(request.POST)
+        if form.is_valid():
+            request.session["passkey"] = form.cleaned_data.get('passkey')
+            form.save()
+            return redirect('questions')
+    form = PkForm()
+    return render(request, 'tst/pk.html', {"form":form})
