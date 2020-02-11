@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from tst import views as tst_views
+from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', tst_views.register, name="register"),
     path('questions/', tst_views.questions, name="questions"),
     path('results-of-students-list/', tst_views.results, name="results"),
+    path('signup/', user_views.signup, name="signup"),
 ]
