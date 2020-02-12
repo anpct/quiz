@@ -80,7 +80,7 @@ def questions(request):
         del request.session["passkey"]
         logout(request)
         return render(request, 'tst/end.html')
-    return render(request, 'tst/questions.html', {'dict_ques': dict_ques})
+    return render(request, 'tst/questions.html', {'dict_ques': dict_ques, 'psk': request.session["passkey"]})
 
 
 def results(request):

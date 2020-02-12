@@ -93,6 +93,7 @@ QUESTIONS
   {{v}}
   <br>
   {% endfor %}
+  {% if psk != "ta2n2j" %}
   <select id="{{ key }}" name="{{ key }}" class="custom-select-sm">
   <option value="0">SELECT AN ANSWER</option>
   <option value="1">1</option>
@@ -100,6 +101,7 @@ QUESTIONS
   <option value="3">3</option>
   <option value="4">4</option>
   </select>
+  {% endif %}
   <br>
 {% endfor %}
 <br>
