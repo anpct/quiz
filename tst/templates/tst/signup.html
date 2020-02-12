@@ -1,8 +1,27 @@
-{% extends 'tst/base.html' %}
 
+{% extends 'tst/base.html' %}
+{% load crispy_forms_tags %}
+{% block css %}
+<style>
+.content-section {
+    background: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    margin-bottom: 20px;
+}
+
+</style>
+    {% endblock %}
+{% block title %}
+REGISTER
+{% endblock %}
 {% block body %}
-  <h2>Sign up</h2>
-  <form method="post">
+<div class="row">
+<div class="col-sm-7">
+<main role="main" class="container">
+    <div class="content-section">
+    <form method="post">
     {% csrf_token %}
     {% for field in form %}
       <p>
@@ -18,4 +37,30 @@
     {% endfor %}
     <button type="submit">Sign up</button>
   </form>
-{% endblock %}
+    </div>
+    </main>
+</div>
+<div class="col-md-4">
+<div class="content-section side-nav">
+                <h3>RULES AND REGULATIONS</h3>
+                <p>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <small class="text-muted">Please enter your roll number in the usrename section.</small>
+                    </li>
+                    <li class="list-group-item">
+                        <small class="text-muted">Do not forget the password we will not reset it for you.</small>
+                    </li>
+                   <li class="list-group-item">
+                        <small class="text-muted">If you have already registered please login using the link below.</small>
+                        <br>
+                        <a href="{% url 'login' %}">
+                        <button type="button" class="btn btn-dark">LOGIN</button>
+                        </a>
+                    </li>
+                </ul>
+                </p>
+            </div>
+</div>
+</div>
+    {% endblock %}

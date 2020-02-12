@@ -82,7 +82,7 @@ def questions(request):
         return render(request, 'tst/end.html')
     return render(request, 'tst/questions.html', {'dict_ques': dict_ques})
 
-@login_required
+
 def results(request):
     if request.method == "POST":
         key = request.POST.get("key")
@@ -94,7 +94,7 @@ def results(request):
         all_entries = Resp.objects.all().filter(passkey = key)
         for i in all_entries:
             roll_no = i.user
-            name = None
+            name = i.user.first_name
             resp = i.resp
             count = 0
             for i in range(len(ans)):

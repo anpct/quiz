@@ -231,5 +231,10 @@ window.onbeforeunload = function(e) {
       return true;
     };
 
+history.pushState(null, null, document.URL);
+window.addEventListener('popstate', function () {
+    history.pushState(null, null, document.URL);
+});
+
 </script>
 {% endblock %}
