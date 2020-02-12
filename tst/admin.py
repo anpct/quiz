@@ -1,3 +1,3 @@
 from django.contrib import admin
-from tst.models import Resp
+from user.models import Resp
 admin.site.register(Resp)

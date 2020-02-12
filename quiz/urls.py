@@ -20,8 +20,8 @@ from user import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('questions/', tst_views.questions, name="questions"),
-    path('results-of-students-list/', tst_views.results, name="results"),
+    path('questions/', user_views.questions, name="questions"),
+    path('results-of-students-list/', user_views.results, name="results"),
     path('', user_views.signup, name="signup"),
     path('login/', user_views.login_request, name='login'),
     path('pk/', user_views.get_pk, name="pk"),

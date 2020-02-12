@@ -14,6 +14,9 @@ def validate_key(key):
 # Create your models here.
 class Resp(Model):
     
-    user = models.ManyToManyField(settings.AUTH_USER_MODEL)
+    class Meta:
+        unique_together = ('user', 'passkey', )
+    
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     passkey = models.CharField(max_length = 6, null = False, blank = False, validators=[validate_key])
     resp = models.CharField(max_length = 30, null = True, blank = True)
