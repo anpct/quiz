@@ -8,7 +8,7 @@
     "ta2n2j": "103",
     "ry51we": "104",
     "ans_n26qxl" : "34232214333334132422",
-    "ans_a2vceu" : "22222222222222222222",
+    "ans_a2vceu" : "34344431333434332442",
     "ans_ta2n2j" : "33333333333333333333",
     "ans_ry51we" : "43134133444431221412",
 
@@ -303,7 +303,7 @@
         "c5":"default:",
         "c6": "printf(\"It is not February\");",
         "c7":"}",
-     "o1": "1) It’s perfectly fine", 
+     "o1": "1) It's perfectly fine", 
      "o2": "2) It will print both statements", 
      "o3": "3) It will give a compilation error",
       "o4": "4) More information required"}	,
