@@ -122,4 +122,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT ='quiz/static/'
 
-ALLOWED_PASSKEY = ['ta2n2j', 'a2vceu', 'n26qxl']
+ALLOWED_PASSKEY = ['ta2n2j', 'a2vceu', 'n26qxl', 'ry51we']
