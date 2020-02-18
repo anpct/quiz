@@ -1,3 +1,3 @@
 # quiz
  
-Simple quiz app using django framework
+Simple quiz app using the django framework
